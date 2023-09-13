@@ -10,9 +10,6 @@ if __name__ == '__main__':
 
     b = np.array([13, 0, 3, 3])
 
-    highs_result = linprog(c, A_ub=A, b_ub=b, method='highs')
-
-    print(f'Usando el método highs: \n \n {highs_result} \n \n')
 
     highs_ds_result = linprog(c, A_ub=A, b_ub=b, method='highs-ds')
 
