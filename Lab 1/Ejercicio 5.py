@@ -32,10 +32,12 @@ if __name__=='__main__':
     F = (X - 4)**2 + 3*Y**2 - 20
     G = X + 8*(Y + 1)**2 - 10
 
-    plt.contour(X, Y, F, [0], colors='red')
+    plt.contour(X, Y, F, [0], colors='black')
     plt.contour(X, Y, G, [0], colors='blue')
     plt.plot(scipy_solution[0], scipy_solution[1], 'o', color='black')
-    plt.plot(first_sympy_solution_values[0], first_sympy_solution_values[1], 'o', color='green')
-    plt.plot(second_sympy_solution_values[0], second_sympy_solution_values[1], 'o', color='green')
+    plt.plot(first_sympy_solution_values[0], first_sympy_solution_values[1], 'o', color='green', label='sympy_solution', markersize=6)
+    plt.plot(second_sympy_solution_values[0], second_sympy_solution_values[1], 'o', color='green', label='sympy_solution', markersize=6)
+    plt.plot(scipy_solution[0], scipy_solution[1], 'x', color='red', label='scipy_solution', markersize=6)
+    plt.legend()
     plt.show()
 
