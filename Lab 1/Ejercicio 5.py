@@ -20,10 +20,8 @@ if __name__=='__main__':
     eq2 = Eq(x + 8*(y + 1)**2 - 10, 0)
     sympy_solution = solve([eq1, eq2], [x, y], dict=True)
 
-    first_sympy_solution_values = [sp.re(sympy_solution[0][x].evalf()), sp.re(sympy_solution[0][y].evalf())]
-    second_sympy_solution_values = [sp.re(sympy_solution[1][x].evalf()), sp.re(sympy_solution[1][y].evalf())]
-    print('First sympy_solution:', first_sympy_solution_values)
-    print('Second sympy_solution:', second_sympy_solution_values)
+    x_sympy_solution_values = [sp.re(sympy_solution[i][x].evalf()) for i in range(len(sympy_solution))]
+    y_sympy_solution_values = [sp.re(sympy_solution[i][y].evalf()) for i in range(len(sympy_solution))]
 
     x = np.linspace(-2, 11, 1000)
     y = np.linspace(-4, 4, 1000)
@@ -35,8 +33,7 @@ if __name__=='__main__':
     plt.contour(X, Y, F, [0], colors='black')
     plt.contour(X, Y, G, [0], colors='blue')
     plt.plot(scipy_solution[0], scipy_solution[1], 'o', color='black')
-    plt.plot(first_sympy_solution_values[0], first_sympy_solution_values[1], 'o', color='green', label='sympy_solution', markersize=6)
-    plt.plot(second_sympy_solution_values[0], second_sympy_solution_values[1], 'o', color='green', label='sympy_solution', markersize=6)
+    plt.plot(fourth_sympy_solution_values[0], fourth_sympy_solution_values[1], 'o', color='green', label='sympy_solution', markersize=6)
     plt.plot(scipy_solution[0], scipy_solution[1], 'x', color='red', label='scipy_solution', markersize=6)
     plt.legend()
     plt.show()
